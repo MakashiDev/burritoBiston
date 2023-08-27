@@ -1,0 +1,18 @@
+service: burritoBison
+
+provider:
+    name: aws
+    region: us-west-2
+
+plugins:
+    - serverless-s3-sync
+
+custom:
+    s3Sync:
+        - bucketName: burittobison-christian
+          localDir: src
+          acl: public-read
+          params:
+              - include: "**/*"
+              - include: "index.html"
+              - include: "built/**/*"
